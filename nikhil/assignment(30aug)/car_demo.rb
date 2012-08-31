@@ -1,13 +1,13 @@
-# To change this template, choose Tools | Templates
-# and open the template in the editor.
-
+# Class for car with its variables and methods....
 class Car
+  #  attribute accessor just as getter and setter
   attr_accessor :model, :color, :cc, :speed
- 
-  def initialize()
-  
-  end
 
+  #  Constructor of Car Class
+  #  def initialize()
+  #
+  #  end
+  #method to create new car.
   def newCar()
     p "lets create a new car"
     print "\ncolor :"
@@ -20,74 +20,69 @@ class Car
     @cc=gets.chop
   end
 
-
+  #method to get details of a car.
   def details()
     p "details of your car"
-    p @color
-    p @model
-    p @speed
-    p @cc
+    p "color : "+@color
+    p "model : "+@model
+    p "speed : "+@speed
+    p "cc    : "+@cc
     p "Press enter to continue"
     gets
   end
-
+  
+  #method to modify a car details.
   def modify()
     p "lets begin the modification"
     print "\ncolor :"
-    p @color=gets
+    p @color=gets.chop
     print "\nmodel :"
-    p @model=gets
+    p @model=gets.chop
     print "\nspeed :"
-    p @speed=gets
+    p @speed=gets.chop
     print "\ncc :"
-    p @cc=gets
+    p @cc=gets.chop
   end
 
 end
 
-
-
-
-
-
-
-
 class Main < Car
-  $choice=1;
-  $noOfCars=0;
-  $names = []
 
-  
 
+  #  private
   def start()
-    while $choice != 4 do
+    choice=1;
+    noOfCars=0;
+    names = []
+    while choice != 4 do
       system("clear")
       puts "Menu / options"
       puts "\n 1. Design a new Car. \n 2. Modify a Car. \n 3. Get details of a Car. \n 4. Quit"
       puts "\n\ncars in your garage"
       puts "--------------------------------"
-
-      for i in $names
-        print " || "+ i.model;
+      count=0
+      for i in names
+        print " || #{count}."+ i.model
+        count+=1
       end
       puts "\n--------------------------------"
       print "\n your choice : "
 
       begin
-        $choice=gets.to_i
+        choice=gets.to_i
 
-        case $choice
+        case choice
         when 1
           p "going to create a new car"
-          $names << Car.new()
-          $names[$noOfCars].newCar
-          $noOfCars +=1;
+          names << Car.new()
+          names[noOfCars].newCar
+          noOfCars +=1;
         when 2
           p "which car are you going to modify car"
-          $names[gets.to_i].modify
+          names[gets.to_i].modify
         when 3
           p "going to get info of a car"
-          $names[gets.to_i].details
+          names[gets.to_i].details
         when 4
           puts "b'bye, thank you"
         else
@@ -100,5 +95,8 @@ class Main < Car
       end
     end
   end
- Main.new.start
+
+  #  this is the code from where the program starts
+  Main.new.start
+
 end
