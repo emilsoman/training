@@ -27,7 +27,7 @@ class FileHandling
 	# make above two methods private
 	private :fileExist?, :fileType
 
-	# open file
+	# open file of given path in specified mode
 	def openFile path, mode
 		File.open(path, mode)
 	end
@@ -49,16 +49,18 @@ class FileOperation < FileHandling
 	# main function for execution
 	def main file_path
 
-		# while loop for continuous execution
-		while true
-			puts "\t\t#{FileHandling::MENU1}"
-			puts "\t\t#{FileHandling::Menu2}"
-			puts "\t\t#{FileOperation::MENU3}"
-			print "\t\tEnter your choice: "
-			selection = gets.chop.to_i
+		# call function start of FileHandling class
+		if start file_path
 
-			# call function start of FileHandling class
-			if start file_path
+			# while loop for continuous execution
+			while true
+				puts "\t\t#{FileHandling::MENU1}"
+				puts "\t\t#{FileHandling::Menu2}"
+				puts "\t\t#{FileOperation::MENU3}"
+				print "\t\tEnter your choice: "
+				selection = gets.chop.to_i
+
+				# call function openFile of FileHandling class and recieve object of opened file
 				file = openFile file_path, "a+"
 
 				if selection == 1
@@ -89,8 +91,13 @@ end
 file_path = ARGV[0]
 ARGV.clear
 
-# create an object of FileOperation class
-obj = FileOperation.new
+# check nil command line argument
+if file_path != nil
+	# create an object of FileOperation class
+	obj = FileOperation.new
 
-# call mathod main of FileOperation class
-obj.main file_path
+	# call mathod main of FileOperation class
+	obj.main file_path
+else
+	puts "Please give a file path as a command line argument."
+end
