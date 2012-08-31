@@ -1,9 +1,5 @@
 class FileHandling
 
-	# define constant
-	MENU1 = "1 for adding lines to file"
-	Menu2 = "2 for viewing file"
-
 	# check path existence
 	def fileExist? path
 		if File.exists? path
@@ -43,9 +39,6 @@ end
 
 class FileOperation < FileHandling
 
-	# define constant
-	MENU3 = "3 for exit"
-
 	# main function for execution
 	def main file_path
 
@@ -54,9 +47,9 @@ class FileOperation < FileHandling
 
 			# while loop for continuous execution
 			while true
-				puts "\t\t#{FileHandling::MENU1}"
-				puts "\t\t#{FileHandling::Menu2}"
-				puts "\t\t#{FileOperation::MENU3}"
+				puts "\t\t1 for adding lines to file"
+				puts "\t\t2 for viewing file"
+				puts "\t\t3 for exit"
 				print "\t\tEnter your choice: "
 				selection = gets.chop.to_i
 
