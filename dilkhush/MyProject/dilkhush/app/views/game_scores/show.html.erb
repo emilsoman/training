@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Game no:</b>
+  <%= @game_score.game_no %>
+</p>
+
+<p>
+  <b>Name name:</b>
+  <%= @game_score.name_name %>
+</p>
+
+<p>
+  <b>Player:</b>
+  <%= @game_score.player %>
+</p>
+
+
+<%= link_to 'Edit', edit_game_score_path(@game_score) %> |
+<%= link_to 'Back', game_scores_path %>

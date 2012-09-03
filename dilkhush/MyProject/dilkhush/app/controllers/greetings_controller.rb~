@@ -1,0 +1,10 @@
+class GreetingsController < ApplicationController
+  def Create
+  end
+
+  def Delete
+  end
+
+  def Add
+  end
+end
