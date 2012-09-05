@@ -1,0 +1,27 @@
+<h1>Listing game_scores</h1>
+
+<table>
+  <tr>
+    <th>Game no</th>
+    <th>Name name</th>
+    <th>Player</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @game_scores.each do |game_score| %>
+  <tr>
+    <td><%= game_score.game_no %></td>
+    <td><%= game_score.name_name %></td>
+    <td><%= game_score.player %></td>
+    <td><%= link_to 'Show', game_score %></td>
+    <td><%= link_to 'Edit', edit_game_score_path(game_score) %></td>
+    <td><%= link_to 'Destroy', game_score, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Game score', new_game_score_path %>
