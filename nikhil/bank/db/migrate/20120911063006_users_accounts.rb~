@@ -1,0 +1,12 @@
+class UsersAccounts < ActiveRecord::Migration
+  def up
+	create.table :users_accounts, :id => false do |t|
+	t.integer :user_id
+	t.integer :account_id	
+	end 
+  end
+
+  def down
+	drop.table :users_accounts
+  end
+end

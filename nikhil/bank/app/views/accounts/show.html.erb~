@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>descp:</b>
+  <%= @account.descp %>
+</p>
+
+<p>
+  <b>Amount:</b>
+  <%= @account.amount %>
+</p>
+
+
+<p>Users:
+  <% @account.users.each do |userss|%>
+    	<br>
+	<%= userss.name %>
+   <% end %>
+</p>
+
+
+
+<%= link_to 'AddUser', new_user_path(@account) %> |
+<%= link_to 'Edit', edit_account_path(@account) %> |
+<%= link_to 'Back', accounts_path %>
