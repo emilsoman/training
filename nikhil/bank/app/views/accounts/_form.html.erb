@@ -19,6 +19,17 @@
     <%= f.label :amount %><br />
     <%= f.text_field :amount %>
   </div>
+
+
+<h2>Account holder</h2>
+<%= fields_for :user do |person_form| %>
+
+  <div class="field">
+  name: <%= person_form.text_field :name %><br>
+</div>
+<% end %>
+
+
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -12,13 +12,24 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :type %><br />
-    <%= f.text_field :type %>
+    <%= f.label :descp %><br />
+    <%= f.text_field :descp %>
   </div>
   <div class="field">
     <%= f.label :amount %><br />
     <%= f.text_field :amount %>
   </div>
+
+
+<h2>Account holder</h2>
+<%= fields_for :user do |person_form| %>
+
+  <div class="field">
+  name: <%= person_form.text_field :name %><br>
+</div>
+<% end %>
+
+
   <div class="actions">
     <%= f.submit %>
   </div>

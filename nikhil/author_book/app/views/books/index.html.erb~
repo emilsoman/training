@@ -45,7 +45,7 @@
 <% book.writers.each do |writer| %>
   
     <%= writer.name %><br/>
-    <br/>
+    <%= writer.location %><br/>
 <% end %></dd>
 </dl>
 </td>

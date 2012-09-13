@@ -36,15 +36,21 @@ class AccountsController < ApplicationController
   def edit
     @account = Account.find(params[:id])
   end
-  def addUser
-	@user = User.new
-    @account = Account.find(params[:id])
-  end
-
+  
   # POST /accounts
   # POST /accounts.json
   def create
-    @account = Account.new(params[:account])
+    
+	@user=User.find_by_name(params[:user][:name])
+	@book=Book.find_by_title(params[:book][:title])
+	if !@user.present?
+		@user=User.new(params[:user]) 
+	end
+	if !@book.present?
+		@book= Book.new(params[:book])
+	end	
+	@book.users << @user
+
 
     respond_to do |format|
       if @account.save

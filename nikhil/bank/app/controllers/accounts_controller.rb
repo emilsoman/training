@@ -40,7 +40,17 @@ class AccountsController < ApplicationController
   # POST /accounts
   # POST /accounts.json
   def create
-    @account = Account.new(params[:account])
+    
+	@user=User.find_by_name(params[:user][:name])
+	@account=Account.find_by_title(params[:account][:title])
+	if !@user.present?
+		@user=User.new(params[:user]) 
+	end
+	if !@account.present?
+		@account= Account.new(params[:account])
+	end	
+	@account.users << @user
+
 
     respond_to do |format|
       if @account.save

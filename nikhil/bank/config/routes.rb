@@ -1,9 +1,7 @@
 Bank::Application.routes.draw do
   
-
-  resources :users do 
-	resources :accounts	
-  end
+resources :accounts	
+  resources :users 
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
