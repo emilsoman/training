@@ -1,0 +1,62 @@
+<%= form_for @project do |f| %>
+  <% if @project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+      <ul>
+      <% @project.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <br>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <br>
+  <div class="field">
+    <%= f.label :estimated_cost %><br />
+    <%= f.text_field :estimated_cost %>
+  </div>
+  <br>
+  <div class="field">
+    <%= f.label :start_date %><br />
+    <%= f.text_field :start_date %>
+  </div>
+  <br>
+  <div class="field">
+    <%= f.label :end_date %><br />
+    <%= f.text_field :end_date %>
+  </div>
+  <br>
+  <h3>Employees</h3>
+  <% Employee.all.each do |employee| %>
+    <div class="field">
+      <% flag = 0 %>
+      <% if @project.employees.size > 0 %>
+        <% @project.employees.each do |employees_selected| %>
+          <% if employee.name == employees_selected.name %>
+            <% flag = 1 %>
+            <%= check_box_tag 'employee_list[]', employee.id, true %>
+            <% break %>
+          <% end %>
+        <% end %>
+      <% end %>
+      <% if flag == 0 %>      
+        <%= check_box_tag 'employee_list[]', employee.id %>
+      <% end %>
+      <%= employee.name %>
+    </div>
+  <% end %>
+  <br>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

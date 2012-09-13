@@ -1,0 +1,33 @@
+<h1>List of Employees</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Contact No</th>
+    <th>Email</th>
+    <th>Designation</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @employees.each do |employee| %>
+  <tr>
+    <td><%= employee.name %></td>
+    <td><%= employee.age %></td>
+    <td><%= employee.contact_no %></td>
+    <td><%= employee.email %></td>
+    <td><%= employee.designation.name %></td>
+    <td><%= link_to 'Show', employee %></td>
+    <td><%= link_to 'Update', edit_employee_path(employee) %></td>
+    <td><%= link_to 'Destroy', employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Create employee', new_employee_path %> |
+<%= link_to 'Back', root_path %> |
+<%= link_to 'Projects', projects_path %>

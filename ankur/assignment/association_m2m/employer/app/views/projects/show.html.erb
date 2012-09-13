@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @project.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @project.description %>
+</p>
+
+<p>
+  <b>Estimated Cost:</b>
+  <%= @project.estimated_cost %>
+</p>
+
+<p>
+  <b>Start Date:</b>
+  <%= @project.start_date %>
+</p>
+
+<p>
+  <b>End Date:</b>
+  <%= @project.end_date %>
+</p>
+
+<p>
+  <b>Employees:</b>
+  <%= join_employees(@project) %>
+</p>
+
+<br>
+
+<%= link_to 'Update', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %> |
+<%= link_to 'Employees', employees_path %>
