@@ -54,8 +54,20 @@
 
   <% Product.all.each do |product| %>
     <div class="field">
+      <% flag = 0 %>
       <%= hidden_field_tag('active_product[]', product.id) %>
-      <%= check_box_tag 'product_list[]', product.id %>
+      <% if @user.products.size > 0 %>
+        <% @user.products.each do |selected_product| %>
+          <% if product.name == selected_product.name %>
+            <% flag = 1 %>
+            <%= check_box_tag 'product_list[]', product.id, true %>
+            <% break %>
+          <% end %>
+        <% end %>
+      <% end %>
+      <% if flag == 0 %>      
+        <%= check_box_tag 'product_list[]', product.id %>
+      <% end %>
       <%= product.name %>
     </div>
   <% end %>

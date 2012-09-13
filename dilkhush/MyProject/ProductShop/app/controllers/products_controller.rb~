@@ -45,14 +45,15 @@ class ProductsController < ApplicationController
     active_user_ids = params[:active_user].collect {|id| id.to_i} if params[:active_user]
     user_ids = params[:user_list].collect {|id| id.to_i} if params[:user_list]
 
+    @product = Product.create(params[:product])
+
     if active_user_ids
       user_ids.each do |id|
         user = User.find(id)
-        @prodcuct.users << user
+        @product.users << user
       end
     end
 
-#    @product = Product.create(params[:product])
 #    @product.users << @user
 
     respond_to do |format|

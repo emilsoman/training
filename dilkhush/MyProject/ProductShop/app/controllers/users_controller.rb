@@ -43,6 +43,7 @@ class UsersController < ApplicationController
 #    @product = Product.find_by_name(params[:name])
     active_product_ids = params[:active_product].collect {|id| id.to_i} if params[:active_product]
     product_ids = params[:product_list].collect {|id| id.to_i} if params[:product_list]
+
     @user = User.new(params[:user])
     
     if active_product_ids
