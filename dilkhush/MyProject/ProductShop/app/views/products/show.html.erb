@@ -1,0 +1,33 @@
+<div class="for_all">
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b> Name:</b>
+  <%= @product.name %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%= @product.price %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @product.description %>
+</p>
+
+<p>
+  <b>Brand:</b>
+  <%= @product.brand %>
+</p>
+
+<p>
+  <b>Users:</b>
+  <% @product.users.each do |user| %>
+  <%= user.name %> 
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>
+<div>
