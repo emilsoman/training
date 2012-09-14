@@ -1,0 +1,9 @@
+class ChangeDateTypesOfProject < ActiveRecord::Migration
+  def up
+  	change_column :projects, :start_date, :date
+  	change_column :projects, :end_date, :date
+  end
+
+  def down
+  end
+end

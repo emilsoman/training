@@ -1,6 +1,0 @@
-class Book < ActiveRecord::Base
-  attr_accessible :category, :title
-
-	has_many :authors
-   has_many :writers, :through => :authors
-end

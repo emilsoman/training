@@ -1,6 +1,0 @@
-<h1>Home#index</h1>
-dsfsd
-sdf
-
-<%link_to "nikhil", posts_path%>
-<%=link_to "My Blog", posts_path%>
