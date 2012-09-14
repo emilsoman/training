@@ -26,8 +26,8 @@
 <%= fields_for :writer do |person_form| %>
 
   <div class="field">
-  name: <%= person_form.text_field :name %><br>
-  location : <%= person_form.text_field :location %><br>
+  name: <br><%= person_form.text_field :name %><br>
+  location : <br><%= person_form.text_field :location %><br>
 </div>
 <% end %>
 
