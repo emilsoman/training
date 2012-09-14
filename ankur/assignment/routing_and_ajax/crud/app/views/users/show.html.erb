@@ -1,0 +1,37 @@
+  <p id="notice"><%= notice %></p>
+
+  <p>
+    <b>Name:</b>
+    <%= @user.name %>
+  </p>
+
+  <p>
+    <b>Date Of Birth:</b>
+    <%= @user.dob %>
+  </p>
+
+  <p>
+    <b>Age:</b>
+    <%= @user.age %>
+  </p>
+
+  <p>
+    <b>Gender:</b>
+    <%= @user.gender %>
+  </p>
+
+  <p>
+    <b>Contact No:</b>
+    <%= @user.contact_no %>
+  </p>
+
+  <p>
+    <b>Email:</b>
+    <%= @user.email %>
+  </p>
+
+  <br>
+
+  <%= link_to 'Update', edit_user_path(@user) %> |
+  <%= link_to 'Back', users_path %>
+  

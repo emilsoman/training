@@ -1,0 +1,38 @@
+
+  <p id="notice"><%= notice %></p>
+
+  <p>
+    <b>Name:</b>
+    <%= @employee.name %>
+  </p>
+
+  <p>
+    <b>Age:</b>
+    <%= @employee.age %>
+  </p>
+
+  <p>
+    <b>Contact No:</b>
+    <%= @employee.contact_no %>
+  </p>
+
+  <p>
+    <b>Email:</b>
+    <%= @employee.email %>
+  </p>
+
+  <p>
+    <b>Designation:</b>
+    <%= @employee.designation.name %>
+  </p>
+
+  <p>
+    <b>Projects:</b>
+    <%= join_projects(@employee) %>
+  </p>
+
+  <br>
+
+  <%= link_to 'Update', edit_employee_path(@employee) %> |
+  <%= link_to 'Back', employees_path %> |
+  <%= link_to 'Projects', projects_path %>
