@@ -1,7 +1,7 @@
 class EmployeesController < ApplicationController
 
   def index
-    @employees = Employee.all
+    @employees = Employee.find(:all, :order => :name)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -21,9 +21,11 @@ class EmployeesController < ApplicationController
   def create
     @employee = Employee.new(params[:employee])
 
-    designation = Designation.find(params[:designation][:id])
+    if params[:designation][:id] != ""
+      designation = Designation.find(params[:designation][:id])
     
-    @employee.designation = designation
+      @employee.designation = designation
+    end
 
     if params[:project_list].present? && params[:project_list].size > 0
       params[:project_list].each do |project_id|
@@ -86,7 +88,7 @@ class EmployeesController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to employees_url }
-      format.json { head :no_content }
+      format.js { render :nothing => true }
     end
   end
 end

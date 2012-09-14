@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
   
   def index
-    @projects = Project.all
+    @projects = Project.find(:all, :order => :start_date)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -78,7 +78,7 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to projects_url }
-      format.json { head :no_content }
+      format.js { render :nothing => true }
     end
   end
 end
