@@ -1,0 +1,8 @@
+class Login < ActiveRecord::Base
+	attr_accessible :password
+	validates :password, :presence => true
+	validates :password, :length => { :minimum => 5 }
+
+	has_one :user, :dependent => :destroy
+
+end

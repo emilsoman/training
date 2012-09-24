@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>QuestionBank</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+	<p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+</head>
+<body>
+<div id="wrapper">
+	<div id="header">
+		<%= image_tag("4.gif", :size => "300x100") %>
+		<div id="sign_in_out_div">
+			<% if user_signed_in? %>
+				Welcome <%= current_user.first_name %><br/>
+				<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
+				&nbsp;&nbsp;&nbsp;<%= link_to('Edit registration', edit_user_registration_path) %>
+			<% else %>
+				<%= link_to('Login', new_user_session_path)  %>
+				&nbsp;&nbsp;&nbsp;<%= link_to('Register', new_user_registration_path)  %>
+			<% end %>
+		</div>
+	</div>
+	<div id="content">
+		<%= yield %>
+	</div>
+	<div id="footer">
+		<h1>Footer</h1>
+	</div>
+</div>
+
+</body>
+</html>
