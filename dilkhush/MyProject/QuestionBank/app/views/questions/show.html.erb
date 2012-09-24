@@ -1,21 +1,26 @@
 <p id="notice"><%= notice %></p>
-<h3><b>Question:</b></h3>
-<p><%= @question.title %></p>
+
+<p><h2><b>Question:</b></h2><br/><%= @question.title %></p>
 <p><%= @question.question_body %></p>
-<p>Attetchment: <%= @question.image %></p>
-<h3><b>Answers:</b></h3>
+<p>
+	<h2><b>Attetchment:</b></h2>
+	<br/><%= image_tag @question.image.url(:small) %>
+</p>
+<h2><b>Answers:</b></h2>
 <p>
 	<table>
 		<% @question.answers.each do |answer| %>
 			<tr>
 				<td><%= answer.answer_body %></td>
-				<td><%= answer.mark %></td>
+				<td><%= radio_button_tag 'mark_answer', 'no', answer.mark %></td>
+				<td><%= link_to 'like', like_answer_path %></td>
+				<td><%= link_to 'unlike', unlike_answer_path %></td>
 			</tr>
 		<% end %>
 	</table>
 <%= link_to 'Post Answer', new_question_answer_path(@question) %>
 <p/>
-<h3><b>Comments:</b></h3>
+<h2><b>Comments:</b></h2>
 <p>
 	<table>
 		<% @question.comments.each do |comment| %>

@@ -16,9 +16,9 @@
 
 
 $(function(){
-  $('.random_question').bind('ajax:success', function() {
+  $('.show_my_list').bind('ajax:success', function() {
 		alert("hi");
-    $('#question_list').load("/show.html.erb");
+    $('#question_list').show();
 
   }); 
 });

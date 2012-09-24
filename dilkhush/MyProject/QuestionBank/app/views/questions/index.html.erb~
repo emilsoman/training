@@ -13,7 +13,6 @@
   <tr>
     <td><%= link_to question.title, question %></td>
     <td><%= question.question_body %></td>
-    <td><%= question.image %></td>
     <td><%= link_to 'Edit', edit_question_path(question) %></td>
     <td><%= link_to 'Destroy', question, confirm: 'Are you sure?', method: :delete %></td>
   </tr>

@@ -3,7 +3,7 @@ class QuestionsController < ApplicationController
 	# GET /questions.json
 	def index
 		puts current_user.id
-		@questions = Question.where("user_id = ?",current_user.id)
+		@questions = Question.all
 		
 		respond_to do |format|
 			format.html # index.html.erb
@@ -42,7 +42,7 @@ class QuestionsController < ApplicationController
 	# POST /questions.json
 	def create
 		puts current_user.email
-		@question = Question.new(params[:question])
+		@question = Question.create(params[:question])
 		@question.user = current_user
 		respond_to do |format|
 			if @question.save
@@ -84,13 +84,19 @@ class QuestionsController < ApplicationController
 	end
 
 	def show_random
-#Question.first(:conditions => [ "id >= ?", rand_id])
-
-
 		@question = Question.find(rand(Question.all.count))	
 		respond_to do |format|
 			format.html { redirect_to question_path(@question) }
-			format.js { render :nothing => true } 
+		end
+	end
+
+	def show_my_question
+		puts current_user.id
+		@questions = Question.where("user_id = ?",current_user.id)
+		puts @questions
+		respond_to do |format|
+			format.html
+			format.json { render json: @questions }
 		end
 	end
 end

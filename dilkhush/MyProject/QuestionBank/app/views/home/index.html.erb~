@@ -1,16 +1,17 @@
-<div id="dashboard">
-	<% if user_signed_in? %>
+<% if user_signed_in? %>
+	<div id="dashboard">
 		<div id="dash_menu">
 			<%= link_to('Post New Question', new_question_path) %>
-			<%= link_to('My Question', questions_path)  %>
+			<%= link_to('My Questions', show_my_question_path) %>
+			<%= link_to('All Questions', questions_path) %>
 			<%= link_to('Randam Question', rand_question_path) %>
 		</div>
 		<div id="question_list">
-			questions list
+			<h1>My question list</h1>
 		</div>
 		<div id="view_rand_question">
-			randam question		
+			<h1>randam question</h1>
 		</div>
-	<% end %>
-</div>
+	</div>
+<% end %>
 

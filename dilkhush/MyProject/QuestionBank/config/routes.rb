@@ -6,10 +6,11 @@ QuestionBank::Application.routes.draw do
 
 	resources :users, :only => [:show, :index]
 
-  resources :ratings
 
   resources :questions do
-	  resources :answers
+	  resources :answers do
+		  resources :ratings
+		end
 	  resources :comments
 	end
 
@@ -22,6 +23,11 @@ QuestionBank::Application.routes.draw do
 
   match '/rand_question', :to => 'questions#show_random'
 
+  match '/show_my_question', :to => 'questions#show_my_question'
+
+	match '/like_answer', :to => 'questions#like'
+
+	match '/unlike_answer', :to => 'questions#unlike'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

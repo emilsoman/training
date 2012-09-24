@@ -83,4 +83,12 @@ class AnswersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+	def like
+		
+	end
+	
+	def unlike
+		
+	end
 end
