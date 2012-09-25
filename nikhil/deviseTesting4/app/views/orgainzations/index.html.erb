@@ -1,0 +1,26 @@
+<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+<h1>Listing orgainzations</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Address</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @orgainzations.each do |orgainzation| %>
+  <tr>
+    <td><%= orgainzation.name %></td>
+    <td><%= orgainzation.address %></td>
+    <td><%= link_to 'Show', orgainzation %></td>
+    <td><%= link_to 'Edit', edit_orgainzation_path(orgainzation) %></td>
+    <td><%= link_to 'Destroy', orgainzation, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Orgainzation', new_orgainzation_path %>

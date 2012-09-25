@@ -1,0 +1,25 @@
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+
+#require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
+require 'spec_helper'
+describe WritersController do
+#  before(:each) do
+#    @writer_controller = WriterController.new
+#  end
+#
+#  it "should desc" do
+#    # TODO
+#  end
+
+  describe "#create" do
+		context "When user is Not Exist" do
+			it "Should create a user" do
+				expect do
+					post :create, writer: { name: "dilkhush", location: "bihar"}
+				end.to change(Writer, :count).by(1)
+			end
+		end
+	end
+end
+

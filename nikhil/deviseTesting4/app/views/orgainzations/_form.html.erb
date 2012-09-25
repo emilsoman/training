@@ -1,0 +1,40 @@
+<%= form_for(@orgainzation) do |f| %>
+  <% if @orgainzation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@orgainzation.errors.count, "error") %> prohibited this orgainzation from being saved:</h2>
+
+      <ul>
+      <% @orgainzation.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_field :address %>
+  </div>
+
+
+
+<h2>Admin</h2>
+<%= fields_for :user do |person_form| %>
+
+  <div class="field">
+  name: <br/><%= person_form.text_field :name %><br/>
+  email : <br/><%= person_form.text_field :email %><br/>
+  password : <br/><%= person_form.text_field :password %><br/>
+</div>
+<% end %>
+
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

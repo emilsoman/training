@@ -6,7 +6,7 @@ class BooksController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @books }
+     format.json { render json: @books }
     end
   end
 

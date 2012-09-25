@@ -1,0 +1,63 @@
+<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+<h1>Listing rooms</h1>
+
+<table border="1">
+  <tr>
+    
+    <th>Logo</th>
+    <th>details</th>
+    <th>action</th>
+    
+  </tr>
+
+  <% @rooms.each do |room| %>
+    <% if room.orgainzation_id == current_user.organization_id %>
+      <tr>
+        <td><%= image_tag room.avatar.url%></td>
+        <td><%= room.name %><br/>
+        <%= room.size %><br/>
+        <%= room.purpose %></td>
+        
+        <td><%= link_to 'Show', room %><br/>
+        <%= link_to 'Edit', edit_room_path(room) %><br/>
+        <%= link_to 'Destroy', room, confirm: 'Are you sure?', method: :delete %></td>
+      </tr>
+    <% end %>
+  <% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Room', new_room_path %>
+
+
+
+
+<h1>Listing Employee</h1>
+
+<table border="1">
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <% @users.each do |user| %>
+    <%@user=user%>
+    <% if user.organization_id == current_user.organization_id %>
+      <%if user.role == 'Employee'%>
+        <tr>
+          <td><%= user.name %></td>
+          <td><%= user.email %></td>
+      <%#*<td><%= link_to 'Show', employee_list_path(:user => user.id) %></td>%>
+          <td><%= link_to 'Show', person_path(user) %></td>
+      <%#*<td><%= link_to 'Show', [:employee, user.id] %></td>%>
+          <td><%= link_to 'Edit', edit_person_path(user) %></td>
+        </tr>
+      <%end%>
+    <%end%>
+  <% end %>
+</table>
+<br />
+<%#= render "devise/shared/links" %>
+<%= link_to 'New Employee', new_person_path %>

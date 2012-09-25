@@ -1,0 +1,11 @@
+<div class="field">
+  name: <br/><%= text_field :user , :name %><br/>
+  email : <br/><%= text_field :user , :email %><br/>
+  password : <br/><%= password_field :user ,  :password %><br/>
+  confirm :<br/> <%= password_field :user , :password_confirmation %>
+</div>
+
+<div class="actions">
+  <%= submit_tag "Create" %>
+</div>
+

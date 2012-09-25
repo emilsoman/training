@@ -1,0 +1,33 @@
+
+<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+<h1>Current status of rooms</h1>
+
+<%=  current_user.name%>
+<table border="1">
+  <tr>
+    <th>Logo</th>
+    <th>Details</th>
+    <th>Status</th>
+    
+  </tr>
+
+<% @rooms.each do |room| %>
+  <% @room=room%>
+  <tr>
+    
+   <td><%= image_tag room.avatar.url%></td>
+   <td><%= room.name %><br/>
+    <%= room.size %><br/>
+    <%= room.purpose %></td>
+    <%if room.user_id == current_user.id%>
+    <td><div id="occupied"><%= link_to 'occupied', apply_path(@room), :remote => true, :class => "occupie_rooms", :link_id => @room.id  %></div></td>
+    <%elsif room.user_id == nil%>
+    <td><div id="occupy"><%= link_to 'occupy', apply_path(@room), :remote => true, :class => "occupie_rooms", :link_id => @room.id %></div></td>
+    <%else%>
+      <td>blocked</td>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+
+
