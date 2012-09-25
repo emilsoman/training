@@ -2,8 +2,7 @@ class AnswersController < ApplicationController
   # GET /answers
   # GET /answers.json
   def index
-    @answers = Answer.all
-
+    @answers = Answer.where("question_id = ?",question.id).order('upvote DESC')
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @answers }
@@ -84,11 +83,30 @@ class AnswersController < ApplicationController
     end
   end
 
-	def like
-		
+	def upvote
+		@answer = Answer.find(params[:answer_id])
+		@answer.upvote += 1
+		@question = Question.find(params[:question_id])
+		respond_to do |format|
+      if @answer.save
+        format.html { redirect_to question_path(@question) }
+        format.js
+			end
+    end
 	end
-	
-	def unlike
-		
+
+	def downvote
+		@answer = Answer.find(params[:answer_id])
+		@answer.downvote += 1
+		@question = Question.find(params[:question_id])
+		respond_to do |format|
+      if @answer.save
+        format.html { redirect_to question_path(@question) }
+        format.js
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @answer.errors, status: :unprocessable_entity }
+      end
+    end
 	end
 end

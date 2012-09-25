@@ -9,7 +9,8 @@ QuestionBank::Application.routes.draw do
 
   resources :questions do
 	  resources :answers do
-		  resources :ratings
+			match '/upvote_answer' => 'answers#upvote'
+			match '/downvote_answer' => 'answers#downvote'
 		end
 	  resources :comments
 	end
@@ -25,9 +26,6 @@ QuestionBank::Application.routes.draw do
 
   match '/show_my_question', :to => 'questions#show_my_question'
 
-	match '/like_answer', :to => 'questions#like'
-
-	match '/unlike_answer', :to => 'questions#unlike'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

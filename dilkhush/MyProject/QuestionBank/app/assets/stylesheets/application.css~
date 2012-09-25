@@ -19,65 +19,61 @@ body {
 	background: none repeat scroll 0 0 transparent;
   margin: 10px auto auto;
   width: 90%;
+	height: 100%;
 }
 
 #header {
   background: none repeat scroll 0 0 transparent;
 	background-image: url("QuestionBank/app/assets/images/6.jpeg")
-  border: 1px solid red;
 	height: 100px;
 }
 
 #sign_in_out_div {
-  border: 1px solid black;
   float: right;
   height: auto;
   width: 20%;
 }
 
 #content {
-	 background: none repeat scroll 0 0 transparent;
-    border: 1px solid yellow;
-    display: inline;
-    height: auto;
+    background: none repeat scroll 0 0 transparent;
+    height: 100%;
     margin: auto;
     width: 95%;
+		border:	solid;
 }
 
-#dashboard { 
-	border: medium solid;
-  width: 45%;
-  border: medium solid;
-  margin: auto;
-  width: 85%;
+
+#dashboard {
+    height: 95%;
+    margin: auto;
+    width: 85%;
 }
 
 #dash_menu {
-  background: none repeat scroll 0 0 transparent;
-  border: medium solid border: medium solid;
-  float: left;
-  width: 45%;;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
+    background: none repeat scroll 0 0 transparent;
+    float: left;
+    height: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
 }
 
+
 #view_rand_question {
-	border: medium solid;
-	float: right;
-	width: 45%;
+    float: right;
+    height: 94%;
+    width: 45%;
 }
 
 #question_list {
-	border: medium solid;
-  float: left;
-  width: 45%;
+    float: left;
+    height: 94%;
+    width: 45%;
 }
-
 #footer {
 	background: none repeat scroll 0 0 transparent;
-  border: 1px solid green;
 	height: 100px;
 	margin-top: 15px;
   text-align: center;
+	border:	solid;
 }

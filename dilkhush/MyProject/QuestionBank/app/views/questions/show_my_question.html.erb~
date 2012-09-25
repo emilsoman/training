@@ -4,11 +4,9 @@
   <tr>
     <th>Title</th>
     <th>Question</th>
-    <th>Images</th>
     <th></th>
     <th></th>
   </tr>
-
 <% @questions.each do |question| %>
   <tr>
     <td><%= link_to question.title, question %></td>

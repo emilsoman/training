@@ -15,10 +15,10 @@ class QuestionsController < ApplicationController
 	# GET /questions/1.json
 	def show
 		@question = Question.find(params[:id])
-
+    @answers = Answer.where("question_id = ?", @question.id).order('upvote DESC')
 		respond_to do |format|
 			format.html # show.html.erb
-			format.json { render json: @question }
+			format.json { render json: { question: @question, answers: @answers } }
 		end
 	end
 
@@ -41,7 +41,6 @@ class QuestionsController < ApplicationController
 	# POST /questions
 	# POST /questions.json
 	def create
-		puts current_user.email
 		@question = Question.create(params[:question])
 		@question.user = current_user
 		respond_to do |format|
@@ -78,22 +77,25 @@ class QuestionsController < ApplicationController
 		@question.destroy
 
 		respond_to do |format|
-			format.html { redirect_to questions_url }
+			format.html { redirect_to show_my_question_url }
 			format.json { head :no_content }
 		end
 	end
 
 	def show_random
-		@question = Question.find(rand(Question.all.count))	
-		respond_to do |format|
-			format.html { redirect_to question_path(@question) }
+		begin
+			@question = Question.find(rand(Question.all.count))	
+		
+			respond_to do |format|
+				format.html { redirect_to question_path(@question) }
+			end
+		rescue
+			retry
 		end
 	end
 
 	def show_my_question
-		puts current_user.id
 		@questions = Question.where("user_id = ?",current_user.id)
-		puts @questions
 		respond_to do |format|
 			format.html
 			format.json { render json: @questions }

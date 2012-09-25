@@ -9,13 +9,25 @@
 <h2><b>Answers:</b></h2>
 <p>
 	<table>
-		<% @question.answers.each do |answer| %>
-			<tr>
-				<td><%= answer.answer_body %></td>
-				<td><%= radio_button_tag 'mark_answer', 'no', answer.mark %></td>
-				<td><%= link_to 'like', like_answer_path %></td>
-				<td><%= link_to 'unlike', unlike_answer_path %></td>
-			</tr>
+		<% @answers.each do |answer| %>
+			<% if answer.mark == true %>
+				<tr>
+					<td><%= answer.answer_body %></td>
+					<td><%= radio_button_tag 'answer[id]', answer.id , answer.mark %></td>
+					<td><%= link_to 'upvote', question_answer_upvote_answer_path(@question, answer), :remote => true, :class => "upvote_answer", :link_id => answer.id  %>&nbsp;&nbsp;<div upvote_id="<%=answer.id%>"><%= answer.upvote %></div></td>
+					<td><%= link_to 'downvote', question_answer_downvote_answer_path(@question, answer), :remote => true, :class => "downvote_answer", :link_id => answer.id  %>&nbsp;&nbsp;<div downvote_id="<%=answer.id%>"><%= answer.upvote %></div></td>
+				</tr>
+			<% end %>
+		<% end %>
+		<% @answers.each do |answer| %>
+			<% if answer.mark == false %>
+				<tr>
+					<td><%= answer.answer_body %></td>
+					<td><%= radio_button_tag 'answer[id]', answer.id, answer.mark %></td>
+					<td><%= link_to 'upvote', question_answer_upvote_answer_path(@question, answer), :remote => true, :class => "upvote_answer", :link_id => answer.id %>&nbsp;&nbsp;<div upvote_id="<%=answer.id%>"><%= answer.upvote %></div></td>
+					<td><%= link_to 'downvote', question_answer_downvote_answer_path(@question, answer), :remote => true, :class => "downvote_answer", :link_id => answer.id %>&nbsp;&nbsp;<div downvote_id="<%=answer.id%>"><%= answer.upvote %></div></td>
+				</tr>
+			<% end %>
 		<% end %>
 	</table>
 <%= link_to 'Post Answer', new_question_answer_path(@question) %>

@@ -19,6 +19,5 @@ $(function(){
   $('.show_my_list').bind('ajax:success', function() {
 		alert("hi");
     $('#question_list').show();
-
   }); 
 });

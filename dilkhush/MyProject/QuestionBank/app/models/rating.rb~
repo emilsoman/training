@@ -10,5 +10,5 @@ class Rating < ActiveRecord::Base
 	end
 
 	belongs_to :answer
-
+	belongs_to :user
 end
